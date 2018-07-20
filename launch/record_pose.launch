@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <!--# Arguments used for declare files-->
+    <arg name="file" default="demo1"/>  <!--which demonstration to replay -->
+    <!--execute custom record motions-->
+    <!--# Load corresponding yaml file to server-->    
+    <rosparam file="$(find demo_segment)/cfg/custom_motions/$(arg file).yaml" command="load"/>
+
+    <!--# Run play motion node-->
+    <node name="run_motion_python" pkg="play_motion" type="run_motion_python_node.py" output="screen" args="LBD_1X" />
+
+    <!--# Run pose2csv node-->
+    <!--<node name="record_ee_pose" pkg="demo_segment" type="pose2csv.py" output="screen" args="$(arg file)" />-->
+  
+
+</launch>
